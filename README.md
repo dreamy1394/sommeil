@@ -21,6 +21,10 @@ L'appli demande l'accès aux données d'utilisation (« Accès spécial »). Act
 - Un délai d'endormissement (10 min par défaut) est ajouté après la dernière utilisation. Réglable aussi.
 - Une tâche de fond met l'historique à jour deux fois par jour : Android ne garde les événements d'écran qu'environ une semaine, les nuits calculées sont donc enregistrées localement.
 
+## Onglet Analyse
+
+Graphiques de la durée de sommeil par semaine (une barre par jour, du lundi au dimanche), par mois (une barre par jour) et par année (moyenne par mois), avec navigation vers les périodes précédentes. Chaque barre est colorée selon la durée (7 h et plus, 6 à 7 h, moins de 6 h) et une ligne pointillée montre la moyenne. Sous le graphique : durée moyenne, nombre de nuits, plus longue et plus courte nuit, heures moyennes de coucher et de réveil.
+
 ## Limites
 
 - C'est une estimation : si tu restes sur ton téléphone au lit ou si tu le laisses allumé en charge, le résultat sera décalé.

@@ -20,6 +20,9 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -34,6 +37,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -55,8 +59,28 @@ class MainActivity : ComponentActivity() {
         SleepWorker.schedule(this)
         setContent {
             AppTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    SleepScreen(refreshKey = resumeCount.intValue)
+                var tab by rememberSaveable { mutableIntStateOf(0) }
+                Scaffold(
+                    bottomBar = {
+                        NavigationBar {
+                            NavigationBarItem(
+                                selected = tab == 0,
+                                onClick = { tab = 0 },
+                                icon = { Text("🌙") },
+                                label = { Text("Nuits") },
+                            )
+                            NavigationBarItem(
+                                selected = tab == 1,
+                                onClick = { tab = 1 },
+                                icon = { Text("📊") },
+                                label = { Text("Analyse") },
+                            )
+                        }
+                    },
+                ) { inner ->
+                    Surface(modifier = Modifier.fillMaxSize().padding(inner)) {
+                        if (tab == 0) SleepScreen(refreshKey = resumeCount.intValue) else AnalysisScreen()
+                    }
                 }
             }
         }
