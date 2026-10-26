@@ -28,7 +28,7 @@ class SleepCalculatorTest {
         assertNotNull(night)
         assertEquals(at(26, 23, 10), night!!.sleepStart) // 23:00 + 10 min d'endormissement
         assertEquals(at(27, 7, 0), night.sleepEnd)
-        assertEquals(410, night.durationMin) // 6 h 50
+        assertEquals(470, night.durationMin) // 23:10 → 07:00 = 7 h 50
     }
 
     @Test
